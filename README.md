@@ -26,3 +26,6 @@ When an Invoice is: Created
 Choose the appropriate custom function in the Action.
 
 Save the workflow. On each SO creation workflow automatically creates the package.
+
+According to this code Package number is created as "PKG" suffixed by Sales order number.
+If you want package number to be generated automatically, then please comment out line number 17 in the code //bsonmr.put("package_number","PKG-"+salesorderNum);
