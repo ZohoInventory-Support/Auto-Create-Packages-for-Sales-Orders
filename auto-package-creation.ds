@@ -1,0 +1,28 @@
+organizationID = organization.get("organization_id").toString();
+salesorderID = salesorder.get("salesorder_id").toString();
+lineitems = salesorder.get("line_items");
+lineitemsrecmap = List();
+for each  lt in lineitems
+{
+	each_lt = Map();
+	line_item_id = lt.get("line_item_id");
+	each_lt.put("so_line_item_id",line_item_id);
+	quantity = lt.get("quantity");
+	each_lt.put("quantity",quantity);
+	lineitemsrecmap.add(each_lt);
+}
+bsonmr = Map();
+bsonmr.put("line_items",lineitemsrecmap);
+bsonmr.put("package_number",salesorderID.tonumber() - 12345);
+bsonmr.put("date",salesorder.get("date"));
+newbson = Map();
+newbson.put("JSONString",bsonmr);
+urld = "https://inventory.zoho.com/api/v1/packages?salesorder_id=" + salesorderID + "&organization_id=" + organizationID;
+resp = invokeurl
+[
+	url :urld
+	type :POST
+	parameters:newbson
+	connection:"zilink"
+];
+info resp;
