@@ -7,7 +7,7 @@ Creates Package right after an order is created.
 
 Settings > Automations > Custom Functions > New Custom Function 
 
-Module: Invoice
+Module: Sales Order
 
 Copy and paste the script Auto-create-packages-for-Sales-Orders.
 
