@@ -1,5 +1,6 @@
 organizationID = organization.get("organization_id").toString();
 salesorderID = salesorder.get("salesorder_id").toString();
+salesorderNum = salesorder.get("salesorder_number").toString();
 lineitems = salesorder.get("line_items");
 lineitemsrecmap = List();
 for each  lt in lineitems
@@ -13,7 +14,7 @@ for each  lt in lineitems
 }
 bsonmr = Map();
 bsonmr.put("line_items",lineitemsrecmap);
-bsonmr.put("package_number",salesorderID.tonumber() - 12345);
+bsonmr.put("package_number","PKG-"+salesorderNum);
 bsonmr.put("date",salesorder.get("date"));
 newbson = Map();
 newbson.put("JSONString",bsonmr);
